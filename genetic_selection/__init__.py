@@ -29,16 +29,14 @@ from sklearn.model_selection import check_cv
 from sklearn.model_selection._validation import _fit_and_score
 from sklearn.metrics.scorer import check_scoring
 from sklearn.feature_selection.base import SelectorMixin
-from sklearn.externals.joblib import cpu_count
+from joblib import cpu_count
 from deap import algorithms
 from deap import base
 from deap import creator
 from deap import tools
 
-
 creator.create("Fitness", base.Fitness, weights=(1.0, -1.0))
 creator.create("Individual", list, fitness=creator.Fitness)
-
 
 def _eaFunction(population, toolbox, cxpb, mutpb, ngen, ngen_no_change=None, stats=None,
                 halloffame=None, verbose=0):
